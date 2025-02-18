@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <link rel="stylesheet" href="cursorTracking.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Tracking</title>
+</head>
+<body>
+    <script>
+        document.addEventListener("mousemove", (event) => {
+            let trail = document.createElement("div");
+            trail.classList.add("trail");
+            document.body.appendChild(trail);
+
+            trail.style.left = `${event.clientX}px`;
+            trail.style.top = `${event.clientY}px`;
+
+            setTimeout(() => {
+                trail.style.opacity = "0";
+                trail.style.transition = "0.15s opacity ease"
+                setTimeout(() => trail.remove(), 200);
+            }, 70);
+        });
+    </script>
+</body>
+</html>
